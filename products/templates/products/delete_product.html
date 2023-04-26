@@ -1,0 +1,67 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Delete Product{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6a">
+      <h2 class="text-center">Confirm Delete</h2>
+      <p class="text-center">Are you sure you want to delete {{ product.name }}?</p>
+      <form method="POST" action="{% url 'delete_product' product.pk %}">
+        {% csrf_token %}
+        <div class="text-center">
+          <button type="submit" class="btn btn-danger mx-2">Delete</button>
+          <a href="{% url 'product-details' product.pk %}" class="btn btn-secondary mx-2">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+.col-md-6a {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px; /* change the value to your desired size */
+  margin: auto; /* center the element horizontally */
+}
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  font-size: 18px;
+  border-radius: 3px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+</style>
+{% endblock %}

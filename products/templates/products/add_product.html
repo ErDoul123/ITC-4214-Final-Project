@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Product{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="my-4">Add a New Product</h1>
+  <form method="POST" class="product_form" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-group row">
+      <label for="{{ form.code.id_for_label }}" class="col-sm-2 col-form-label">Product Code:</label>
+      <div class="col-sm-10">
+        {{ form.code }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="{{ form.name.id_for_label }}" class="col-sm-2 col-form-label">Name:</label>
+      <div class="col-sm-10">
+        {{ form.name }}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="{{ form.price.id_for_label }}" class="col-sm-2 col-form-label">Price:</label>
+      <div class="col-sm-10">
+        {{ form.price }}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="{{ form.short_desc.id_for_label }}" class="col-sm-2 col-form-label">Short Description:</label>
+      <div class="col-sm-10">
+        {{ form.short_desc }}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="{{ form.description.id_for_label }}" class="col-sm-2 col-form-label">Description:</label>
+      <div class="col-sm-10">
+        {{ form.description }}
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="{{ form.category.id_for_label }}" class="col-sm-2 col-form-label">Category:</label>
+        <div class="col-sm-10">
+          {{ form.category }}
+        </div>
+    </div>
+
+    <div class="form-group row in-stock">
+      <label for="{{ form.in_stock.id_for_label }}">In Stock:</label>
+      <div class="col-sm-10">
+        {{ form.in_stock }}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="{{ form.image.id_for_label }}" class="col-sm-2 col-form-label">Image:</label>
+      <div class="col-sm-10">
+        {{ form.image }}
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10 offset-sm-2">
+        <button type="submit" class="submit_product">Add Product</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<style>
+
+.container {
+  max-width:700px;
+  margin: auto;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.col-form-label {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group.in-stock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-group.in-stock label {
+  width: 100px;
+  font-weight: bold;
+}
+
+.form-group.in-stock input {
+  flex: 1;
+  width: auto;
+  height:30px;
+  min-width: 50px;
+  padding: 12px 20px;
+  margin-left: 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.submit_product {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form-group.row:last-of-type {
+  text-align: center;
+}
+.form-group.row:last-of-type button {
+  display: inline-block;
+}
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+</style>
+{% endblock content %}

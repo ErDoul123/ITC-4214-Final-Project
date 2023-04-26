@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{ category.name }} Products{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-5 mb-3">{{ category.name }} Products</h1>
+  <div class="row">
+
+    {% for product in products %}
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card mb-4">
+          {% if product.image %}
+            <a href="{% url 'product-details' id=product.id %}">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top">
+          </a>
+          {% endif %}
+          <div class="card-body">
+            <h2 class="card-title">
+                <a href="{% url 'product-details' id=product.id %}">{{ product.name }}</a>
+            </h2>
+            <p class="card-price">
+                <a href="{% url 'product-details' id=product.id %}">${{ product.price }}</a>
+            </p>
+            {% if product.short_desc %}
+              <p class="card-text">{{ product.short_desc }}</p>
+            {% endif %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="rating">
+                {% if product.rating %}
+                  <p>Rating: {{ product.rating }}</p>
+                {% else %}
+                <p>No Rating</p>
+                {% endif %}
+              </div>
+              {% if product.in_stock %}
+                <p class="stock green mb-0">In stock</p>
+              {% else %}
+                <p class="stock red mb-0">Out of stock</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+        <tr>
+          <td>No products found in this category.</td>
+    {% endfor %}
+  </div>
+</div>
+
+
+<style>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.product-heading {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+
+}
+
+.product-description {
+  font-size: 24px;
+  text-align: center;
+  color: #666;
+
+      }
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
+}
+
+.col-sm-6.col-md-4.col-lg-3 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.card {
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  object-fit: contain;
+  height: 200px;
+  border-radius: 4px 4px 0 0;
+}
+
+.card-body {
+  padding: 10px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.card-title a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.2s ease-in-out;
+}
+.card-title a:hover {
+  text-decoration: underline;
+
+}
+
+.card-price {
+
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.card-price a{
+text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.stock {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.stock.green {
+  background-color:#4CAF50 ;
+  color: white;
+}
+
+.stock.red {
+  background-color: #F44336;
+  color: white;
+}
+
+</style>
+
+{% endblock content %}

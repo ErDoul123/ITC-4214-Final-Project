@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Category{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h2>Add Category</h2>
+            <a href="{% url 'category_list' %}" class="btn btn-secondary">Back to Categories</a>
+          </div>
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Name:</label>
+                <input type="text" class="form-control" id="{{ form.name.id_for_label }}" name="{{ form.name.name }}" placeholder="Enter category name" required>
+                <div class="invalid-feedback">Please enter a category name.</div>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.description.id_for_label }}">Description:</label>
+                <textarea class="form-control" id="{{ form.description.id_for_label }}" name="{{ form.description.name }}" placeholder="Enter category description"></textarea>
+              </div>
+              <br/><br/>
+              <button type="submit" class="btn btn-primary">Add Category</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

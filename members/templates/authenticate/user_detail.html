@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}User Details{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">{{ user.username }}</h1>
+        </div>
+        <div class="card-body">
+          <p class="text-center">Email: {{ user.email }}</p>
+          <p class="text-center">First Name: {{ user.first_name }}</p>
+          <p class="text-center">Last Name: {{ user.last_name }}</p>
+          <p class="text-center">Date of Last Login: {{ user.last_login}}</p>
+          <p class="text-center">Date of Registration: {{ user.date_joined }}</p>
+          <div class="text-center">
+            <a href="{% url 'users_list' %}" class="btn btn-primary">Go Back to User List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

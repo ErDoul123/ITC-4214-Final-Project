@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Home {% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <!-- Category menu -->
+      <div class="category-menu">
+        <h5>Categories</h5>
+        <ul class="list-group">
+          {% for category in categories %}
+          <li class="list-group-item"><a href="{% url 'category_products' category.id %}" class="text-decoration-none h3 mb-0">{{ category.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="jumbotron">
+        <h1>Welcome to our website!</h1>
+        <p class="lead">We offer a wide selection of products for your needs.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7">
+          <img class="d-block w-100" src="media\media\images\msi_geforce_rtx_3080_10gb.jpeg" alt="Product 1">
+          <div class="exclusive-label">Exclusive</div>
+        </div>
+        <div class="col-md-5">
+          <h2>MSI GeForce RTX 3080 10GB Graphics Card</h2>
+          <p>The MSI GeForce RTX 3080 10GB Graphics Card is a high-performance graphics card designed for serious gamers and content creators. With 10GB of GDDR6X memory, it delivers blazing-fast speeds and smooth performance for the most demanding applications.</p>
+          <p class="text-danger">Available only on our website!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<style>
+  /* Category menu styles */
+  .category-menu {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    padding-left: 0;
+  }
+  .category-menu h5 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .category-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .category-menu li {
+    margin-bottom: 5px;
+  }
+  .category-menu a {
+    text-decoration: none;
+    color: #000;
+  }
+  .category-menu a:hover {
+    text-decoration: underline;
+  }
+
+  /* Remove left margin from column */
+  .col-md-3 {
+    margin-left: 0;
+  }
+
+  /* Exclusive label styles */
+  .exclusive-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+</style>
+{% endblock content %}
